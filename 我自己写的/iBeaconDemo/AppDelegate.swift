@@ -16,6 +16,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
   func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
     // Override point for customization after application launch.
+    NSNotificationCenter.defaultCenter().addObserver(self, selector: "applicationWillResignActive",name: UIApplicationWillResignActiveNotification, object: nil)
     return true
   }
 
@@ -39,6 +40,30 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
   func applicationWillTerminate(application: UIApplication) {
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
+  }
+  func application(application: UIApplication, handleOpenURL url: NSURL) -> Bool {
+
+    return true
+  }
+  func application(app: UIApplication, openURL url: NSURL, options: [String : AnyObject]) -> Bool {
+    if (url.scheme ==  "iBeacon"){
+      print("widget   noti")
+
+      
+    }
+    return true
+  }
+  func application(application: UIApplication, openURL url: NSURL, sourceApplication: String?, annotation: AnyObject) -> Bool {
+
+    return true
+  }
+
+
+
+  @objc private func applicationWillResignActive() {
+
+    print("applicationWillResignActive")
+  
   }
 
 
